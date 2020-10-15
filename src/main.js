@@ -2,6 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './assets/css/common.css'
+Vue.use(Element)
 // 状态管理
 import store from './store'
  
@@ -15,10 +19,7 @@ Vue.component('my-fangdajin',Fangdajin)
 
  
  
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import './assets/css/common.css'
- Vue.use(Element)
+
  
  
  

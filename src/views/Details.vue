@@ -77,7 +77,7 @@
   margin-left: 5px;
 }
 .seckill strong{
-
+}
 .seckill_time{
   color: #fff;
 }
