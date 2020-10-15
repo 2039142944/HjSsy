@@ -36,8 +36,9 @@ const routes = [
   {
  
     path:'/shoppingcar',
-    component:ShoppingCar
- 
+    component:ShoppingCar,
+  },
+  {
     path: '/payoff',
     name: 'payoff',
     component: () => import(/* webpackChunkName: "about" */ '../views/payoff/payoff.vue')
