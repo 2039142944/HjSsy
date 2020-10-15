@@ -46,26 +46,17 @@
 				i: 0,
 				imgs: [{
 						src: "/images/1.jpg",
-						<<
-						<< << < HEAD
-						title: "全民烹饪超狂欢，10.12日老板大牌秒杀日，等你来哦！",
-						===
-						=== =
+						 
 						title: "《Ghost Mane》| STARR J与恶魔一起住在Dark Castle",
-						>>>
-						>>> > e493ab5741b7497660bdc4a92b7a478e5710d013
+						 
 						to: "javascript:;"
 					},
 					{
 						src: "/images/2.jpg",
-						<<
-						<< << < HEAD
-						title: "面霜品类秒杀日，9.9元限量抢大牌",
-						===
-						=== =
+						 
+						
 						title: "赐我们一首比“情歌而已”更值得唱的歌 声音碎片第三支预热单曲《送流水》首发",
-						>>>
-						>>> > e493ab5741b7497660bdc4a92b7a478e5710d013
+						
 						to: "javascript:;"
 					}
 					// { 
@@ -182,11 +173,10 @@
     display:block;
   } */
 	section>.carousel {
-		<<<<<<< HEAD margin-top: 10px;
+		 
+	    margin-top: 360px;
 		overflow: hidden;
-		=======margin-top: 360px;
-		/* overflow:hidden; */
-		>>>>>>>e493ab5741b7497660bdc4a92b7a478e5710d013
+	 
 	}
 
 	section>.carousel:after {
@@ -301,9 +291,9 @@
 		width: 40px;
 		height: 100px;
 		background-color: rgba(95, 95, 92, 0.3);
-		<<<<<<< HEAD top: 30%;
-		=======top: 20%;
-		>>>>>>>e493ab5741b7497660bdc4a92b7a478e5710d013 margin-left: 40px;
+		 
+	    top: 20%;
+		margin-left: 40px;
 		border-radius: 0.25rem;
 	}
 
