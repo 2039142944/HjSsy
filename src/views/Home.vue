@@ -1,290 +1,6 @@
 <template>
+ 
   <div class="home">
-    <!-- 顶部导航 -->
-    <div class="row no-gutters top_nav">
-      <div class="col-sm-12 col-lg-4">
-        <a href="#">
-          <img class="shuangshiyi mt-1" src="/images/shuangshiyi.png" alt="" /> 
-          <span>双十一</span>
-        </a>
-      </div>
-      <div class="col-sm-12 col-lg-4 mt-2">
-        <input
-          class="w-75 input_1"
-          type="text"
-          placeholder="手机/电脑/鼠标/酒水"
-        /><button>搜索</button>
-      </div>
-      <div class="col-sm-12 col-lg-4 my-4">
-        <a href="">登录</a>
-        <span class="mr-2 ml-2">|</span>
-        <a href="">注册</a>
-      </div>
-    </div>
-    <div class="img_1">
-      <img src="/images/bjtp.jpg" alt="" />
-      <div>
-        <h1>黄金双十一,<span class="text">等你来</span>狂欢</h1>
-        <p class="text-blue h4 text-left">每年一亿多客户的选择，不容错过</p>
-      </div>
-    </div>
-    <div class="miaosha"></div>
-    <!-- 轮播图组件 -->
-    <my-carousel></my-carousel>
-    <!-- 商品内容 -->
-    <div class="mt-2">
-      <ul class="d-flex justify-content-around">
-        <li>
-          <span>20:00</span
-          ><button class="btn btn-outline-danger btn-sm ml-2">正在进行</button>
-        </li>
-        <li>
-          <span>22:00</span
-          ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
-        </li>
-        <li>
-          <span>00:00</span
-          ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
-        </li>
-        <li>
-          <span>明早6:00</span
-          ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
-        </li>
-        <li>
-          <span>明早8:00</span
-          ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
-        </li>
-      </ul>
-    </div>
-    <div class="mt-2">
-      <ul class="d-flex justify-content-around flex-wrap content">
-        <li>
-          <div>
-            <img class="py-3" src="/images/001.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/002.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/003.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/004.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/005.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/006.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/007.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-        <li>
-          <div>
-            <img class="py-3" src="/images/008.jpg" alt="" />
-            <h4 class="subject text-muted">全手工菩提金叶盏附检测报告证书</h4>
-            <p class="details my-2">内壁足金 买4免1</p>
-          </div>
-          <div class="a">
-            <div class="e ml-3">123天历史最低价</div>
-            <span class="d ml-3"><em>¥</em>389</span><i class="f">¥1299</i>
-            <div class="g d-flex">
-              <span class="b ml-4 mt-1">已售96%</span>
-              <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-            </div>
-            <a href="" target="_blank" class="k">立即抢购</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <!-- 中间内容 -->
-    <div class="row no-gutters">
-      <div class="col-lg-6">
-        <div class="img1_center">
-          <img src="/images/009.jpg" alt="" />
-          <button class="btn btn-danger">立即抢购</button>
-        </div>
-        <div class="center">
-          <ul class="d-flex justify-content-around img2_center">
-            <li>
-              <img src="/images/009-1.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-            <li>
-              <img src="/images/009-1.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-            <li>
-              <img src="/images/009-1.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="img1_center">
-          <img src="/images/009.jpg" alt="" />
-          <button class="btn btn-danger">立即抢购</button>
-        </div>
-        <div class="center">
-          <ul class="d-flex justify-content-around img2_center">
-            <li>
-              <img src="/images/009-2.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-            <li>
-              <img src="/images/009-2.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-            <li>
-              <img src="/images/009-2.jpg" alt="" />
-              <h4 class="sm_sub mt-2">全手工菩提金叶盏附检测报告证书</h4>
-              <div>
-                <span class="sm_pri"><em>¥</em>389</span
-                ><i class="f">¥<del>1299</del></i>
-              </div>
-              <div class="">
-                <span class="sm_sal">已售96%</span>
-                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- ---------------------------------------------------------------------------- -->
-    <!-- ---------------------------------------------------------------------------- -->
     <div class="mt-2">
       <ul class="d-flex justify-content-around flex-wrap content">
         <li>
@@ -864,5 +580,95 @@ ul.content img:hover {
 </style>
 
  
+=======
+	<div>
+    <!-- 顶部导航 -->
+       <div class="row no-gutters top_nav">
+         <div class="col-sm-12 col-lg-4">
+           <a class="top_left" href="">
+             <img class="shuangshiyi" src="/images/shuangshiyi.png" alt=""> 双十一
+           </a>
+         </div>
+         <div class="col-sm-12 col-lg-4 mt-2">
+           <input class="w-75 input_1" type="text" placeholder="手机/电脑/鼠标/酒水"><button>搜索</button>
+         </div>
+         <div class="col-sm-12 col-lg-4 my-3">
+           <a href="">登录</a>       
+           <span class="mr-2 ml-2">|</span>
+           <a href="">注册</a>
+         </div>
+       </div>
+       <div class="img_1">
+         <img src="/images/bjtp.jpg" alt="">
+         <div>
+           <h1>黄金双十一,<span class="text">等你来</span>狂欢</h1>
+           <p class="text-white h4 text-left">每年一亿多客户的选择，不容错过</p>
+         </div>
+       </div>
+       <my-carousel></my-carousel>
+  </div>
+</template>
+<style scoped>
+  .top_nav{
+    position: relative;
+    height: 60px;
+    color: #fff;
+    background-color: rgba(0,0,0,.06);
+    z-index: 11;
+  }
+  .top_nav button{
+    width: 60px;
+    height: 40px;
+    background-color: #ff961e;
+    border: 0;
+  }
+  .top_nav div:nth-child(1) a{
+    font-family: cursive;
+   font-size: 30px;
+   font-weight: bolder;
+   color: rgb(95, 94, 94);
+  }
+  .top_nav div:nth-child(3) a{
+    text-decoration: none;
+    color: #fff;
+  }
+  .shuangshiyi{
+    max-width: 50px;
+   vertical-align: bottom;
+  }
+  .input_1{
+    height: 40px;
+    border: 2px solid #aaa;
+  }
+  .img_1{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+  .img_1 img{
+    width: 100%;
+    display: block;
+    opacity: 1;
+  }
+  .img_1 div{
+    position: absolute;
+    top: 30%;
+    left: 5%;
+  }
+  .img_1 div h1{
+    font-size: 60px;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,.06);
+    margin: 0 0 12px -5px;
+    font-weight: 600;
+  }
+  .text{
+    color: #aaa;
+  }
+</style>
+>>>>>>> e493ab5741b7497660bdc4a92b7a478e5710d013
  
  
