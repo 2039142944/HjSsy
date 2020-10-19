@@ -21,6 +21,7 @@
 		overflow: hidden;
 		line-height: 28px;
 		font-size: 13px;
+		text-align: center;
 	}
 	.forgeryblock::before {
 		content: "";

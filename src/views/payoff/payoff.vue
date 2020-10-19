@@ -192,11 +192,13 @@
 <script>
 	import buttonstyle from '../../components/payoff/selebutton.vue'
 	import tabbar from '../../components/payoff/tabbar.vue'
+	
+	 
 	export default {
-		
 		components: {
 			buttonstyle,
-			tabbar
+			tabbar,
+			 
 		},
 		data() {
 			return {
@@ -573,7 +575,7 @@
 		float: left;
 		position: relative;
 		border: 1px solid #ddd;
-		height: 18px;
+		 
 		line-height: 18px;
 		padding: 5px 24px;
 		cursor: pointer;
@@ -624,6 +626,7 @@
 		border: 1px solid #ddd;
 		padding: 30px;
 		min-width: 700px;
+		font-size: 12px;
 	}
 
 	.payinfo {
