@@ -118,9 +118,9 @@ export default {
       var left = e.offsetX - 88;
       var top = e.offsetY - 88;
       if (left < 0) left = 0;
-      else if (left > 216) left = 216;
+      else if (left > 180) left = 180;
       if (top < 0) top = 0;
-      else if (top > 216) top = 216;
+      else if (top > 190) top = 190;
       this.maskStyle = {
         left: left + "px",
         top: top + "px",

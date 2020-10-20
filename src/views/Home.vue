@@ -1,7 +1,10 @@
  <template>
-   <div class="home">
+   <div class="home" style="width: 100%;">
+	 
+	 
+	 
      <!-- 顶部导航 -->
-     <div class="row no-gutters top_nav">
+     <div class="row no-gutters top_nav" style="margin-top: 50px;">
        <div class="col-sm-12 col-lg-4">
          <a href="#">
            <img class="shuangshiyi mt-1" src="/images/shuangshiyi.png" alt="" /> 
@@ -12,14 +15,10 @@
          <input
            class="w-75 input_1"
            type="text"
-           placeholder="手机/电脑/鼠标/酒水"
-         /><button>搜索</button>
+           placeholder="手机/电脑/鼠标/酒水" style="outline: 0;padding: 15px;font-size: 14px;font-family:agency fb;"
+         /><button  style="outline: 0;font-size: 14px;font-family:agency fb;">搜索</button>
        </div>
-       <div class="col-sm-12 col-lg-4 my-4">
-         <a href="">登录</a>
-         <span class="mr-2 ml-2">|</span>
-         <a href="">注册</a>
-       </div>
+        
      </div>
      <div class="img_1">
        <img src="/images/bjtp.jpg" alt="" />
@@ -35,23 +34,23 @@
      <div class="mt-2">
        <ul class="d-flex justify-content-around">
          <li>
-           <span>20:00</span
+           <span><span id="one1"><count-down :info="'one1#2080:10:19:23:10:0'" /></span> </span
            ><button class="btn btn-outline-danger btn-sm ml-2">正在进行</button>
          </li>
          <li>
-           <span>22:00</span
+           <span><span id="one2"><count-down :info="'one2#2049:10:20:18:10:0'" /></span></span
            ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
          </li>
          <li>
-           <span>00:00</span
+           <span><span id="one3"><count-down :info="'one3#2080:10:23:1:15:0'" /></span></span
            ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
          </li>
          <li>
-           <span>明早6:00</span
+           <span><span id="one4"><count-down :info="'one4#2060:10:20:1:45:0'" /></span></span
            ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
          </li>
          <li>
-           <span>明早8:00</span
+           <span><span id="one5"><count-down :info="'one5#2050:10:20:23:15:0'" /></span></span
            ><button class="btn btn-outline-danger btn-sm ml-2">即将开始</button>
          </li>
        </ul>
@@ -71,7 +70,7 @@
                <span class="b ml-4 mt-1">已售96%</span>
                <!-- <span class="i"><b class="j" style="width: 107%"></b></span> -->
              </div>
-             <a href="" target="_blank" class="k">立即抢购</a>
+             <a href="/details"   class="k">立即抢购</a>
            </div>
          </li>
          <li>
@@ -585,7 +584,23 @@
      </div>
    </div>
  </template>
+ <script>
+	 import topBar from 'components/payoff/top'
+	 import countDown from 'components/payoff/countdown'
+	 export default{
+		 name:"info",
+		 components:{
+			 topBar,
+			 countDown
+		 }
+		 
+	 }
+ </script>
  <style scoped>
+	 .home{
+		 font-family:  "Roboto";
+		 
+	 }
  /* 底部 */
  .copyright_split{
    display: inline-block;
@@ -633,7 +648,7 @@
    position: relative;
    height: 60px;
    color: #fff;
-   background-color: rgba(0, 0, 0, 0.06);
+   
    z-index: 11;
    position: fixed;
    top: 0;
@@ -667,7 +682,7 @@
  }
  .input_1 {
    height: 40px;
-   border: 2px solid #aaa;
+   border: 1px solid #aaa;
  }
  .img_1 {
    width: 100%;

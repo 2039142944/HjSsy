@@ -5,12 +5,12 @@
 			<div class="pic"><img src="~assets/img/4.jpg"></div>
 			<div style="text-align: left;padding: 20px;">
 				<p>订单提交成功，请尽快付款！订单号：<span>127990573086</span></p>
-				<p>推荐使用 扫码支付 | 请您在<countdown :info="'2020:10:16:15:20:10'" style="color: red;"></countdown>
+				<p>推荐使用 扫码支付 | 请您在<span id="ooo"><countdown :info="'ooo#2067:10:16:15:20:10'" style="color: red;"></countdown></span>
 					内完成支付，否则订单会被自动取消</p>
 			</div>
 			<div style="text-align: right;padding: 20px;">
 				<p>应付金额86.90元</p>
-				<p>订单详情 <span class="sanjiao" @click="selected"></span></p>
+				<p>订单详情 <span class="sanjiao" @click="selected" style="cursor: pointer;"></span></p>
 				
 			</div>
 		</div>
@@ -181,10 +181,10 @@
 	}
 
 	.contain {
-		margin: 100px 300px;
-		height: 1000px;
+		margin: 100px 100px;
+	 
 		border: 1px solid #ddd;
-		padding: 30px;
+		padding: 50px;
 		min-width: 700px;
 		font-size: 12px;
 	}

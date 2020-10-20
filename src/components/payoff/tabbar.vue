@@ -34,11 +34,12 @@
  
  <style scoped>
   .navbars {
-     
+     cursor: pointer;
      display: flex;
      position: relative;
      background-color: #f6f6f6;
      height: 37px;
+	  text-align: center;
   }
    
   .navbars > .item {
@@ -49,11 +50,14 @@
     /* 子项目等宽 */
   }
   .navbars > .text {
+	  
    position: absolute;
    top: 30px;
    height: 100px;
-   background-color: #999999;
+   background-color: #CCCCCC;
    width: 100%;
+   cursor: pointer;
+  
     /* 子项目等宽 */
   }
    

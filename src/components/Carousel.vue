@@ -1,6 +1,6 @@
 <template>
 
-	<div>
+	<div style="margin-top: -300px;">
 		<section style="overflow: hidden;">
 			<div id="demo" class="carousel" :style="{width:innerWidth+'px'}" @mouseenter="stop" @mouseleave="start">
 				<!--1.轮播图片-->

@@ -1,204 +1,233 @@
 <template>
-	<div class="contain">
-		<div>
-			<p>填写并合并订单消息</p>
+	<div>
+		<div class="containtop" style="display: flex;justify-content: space-between;flex-wrap: nowrap;align-items: center;">
+			<div style="flex: 0 0 20%;">
+				<a data-v-fae5bece="" href="#">
+					<img data-v-fae5bece="" src="~assets/images/shuangshiyi.png" style="max-width: 120px;" alt="" class="shuangshiyi mt-1">
+					<span data-v-fae5bece="">双十一</span>
+				</a>
+			</div>
 
-		</div>
-		<!-- 收货人信息 -->
+			<div style="flex: 0 0 60%;">
+				<el-steps :active="1" finish-status="success">
+					<el-step title="查看购物车"></el-step>
+					<el-step title="拍下商品"></el-step>
+					<el-step title="支付"></el-step>
+					<el-step title="确认支付"></el-step>
+					<el-step title="评价"></el-step>
+
+				</el-steps>
+			</div>
+		</div>x`
 		<div>
-			<div style="display: flex;justify-content: space-between;">
+			<div class="contain">
 				<div>
-					<h3 class="bases">收货人信息</h3>
+
+					<p>填写并合并订单消息</p>
+
+				</div>
+				<!-- 收货人信息 -->
+				<div>
+					<div style="display: flex;justify-content: space-between;">
+						<div>
+							<h3 class="bases">收货人信息</h3>
+						</div>
+						<div>
+							<span @click="showinfo" style="line-height: 100%;"><a href="javascript:" style="color: red;">新增收货地址</a></span>
+						</div>
+
+					</div>
+
+					<div class="payinfo">
+						<buttonstyle style="margin-top: 10px;">
+							<div slot="context">袁明亮</div>
+						</buttonstyle>
+						<div style="width: 80%;margin-left: 20px;">
+							<el-table :data="userinfo" stripe>
+								<el-table-column prop="name" width="180">
+								</el-table-column>
+								<el-table-column prop="address" width="180">
+								</el-table-column>
+								<el-table-column prop="tel">
+								</el-table-column>
+							</el-table>
+						</div>
+					</div>
+
+				</div>
+				<el-dialog title="新增收货人信息" :visible.sync="dialogVisible" width="50%">
+					<el-form ref="ruleforms" :rules="rulesinfo" :model="ruleform" class="demo-ruleForm">
+
+						<el-form-item label="所在地区" prop="name" style="text-align: left;">
+							<el-cascader v-model="value" :options="options" :props="{ expandTrigger: 'hover' }"></el-cascader>
+						</el-form-item>
+						<el-form-item label="收货人" prop="address">
+							<el-input v-model="ruleform.address"></el-input>
+						</el-form-item>
+						<el-form-item label="详细地址" prop="detailaddress">
+							<el-input v-model="ruleform.detailaddress"></el-input>
+						</el-form-item>
+						<el-form-item label="手机号码" prop="phone">
+							<el-input v-model="ruleform.phone"></el-input>
+						</el-form-item>
+						<el-form-item label="固定电话" prop="telone">
+							<el-input v-model="ruleform.telone"></el-input>
+						</el-form-item>
+						<el-form-item label="邮箱地址" prop="email">
+							<el-input v-model="ruleform.email"></el-input>
+						</el-form-item>
+						<el-form-item label="地址别名" prop="addressname">
+							<el-input v-model="ruleform.addressname"></el-input>
+						</el-form-item>
+					</el-form>
+
+					<span slot="footer" class="dialog-footer">
+						<el-button @click="dialogVisible = false">取 消</el-button>
+						<el-button type="primary" @click="submit">确 定</el-button>
+					</span>
+				</el-dialog>
+				<el-divider></el-divider>
+				<!-- 支付方式 -->
+				<div>
+					<h3 class="bases">支付方式</h3>
+					<div class="paysect">
+						<div class="commbutton" slot="context">货到付款</div>
+						<buttonstyle>
+							<div slot="context">支付方式</div>
+						</buttonstyle>
+						<span>更多>></span>
+					</div>
+				</div>
+				<el-divider></el-divider>
+
+				<!-- 送货清单 -->
+				<div>
+					<div style="display: flex;justify-content: space-between;">
+						<h3 class="bases">送货清单</h3>
+						<div>
+							<span><a href="#">价格说明</a></span>
+							<span><a href="#">修改购物车</a></span>
+						</div>
+					</div>
+					<div class="sendhuo">
+						<div style="display: flex;flex-direction: column;justify-content: space-around;">
+							<p>配送方式</p>
+							<buttonstyle>
+								<div slot="context">快递运输</div>
+							</buttonstyle>
+							<p>
+								配送时间 ：<span>预计10月17日24:00前送达</span>
+							</p>
+							<el-divider></el-divider>
+							<div style="display: flex;align-items: center;">
+								<input type="checkbox" />
+								<span style="margin-left: 5px;">退货无忧</span>
+								<span style="color: red;">￥4.80</span>
+							</div>
+							<p>7天内退货，15天内换货，预计获得9.8元运费赔付(到小金库)。<a href="#">查看详情</a></p>
+						</div>
+						<div style="display: flex;flex-direction: column;justify-content: space-around;">
+
+							<p style="margin:10px 0px;">商家：<span>马提尔服饰专营店</span> </p>
+							<p style="margin:10px 0px;">活动商品购满120.00元，即可享受满减优惠</p>
+
+							<div style="margin:10px 0px;" class="largtable">
+								<el-table :data="goodsinfo">
+									<el-table-column width="180">
+										<template v-slot:default="scope">
+											<!-- <img src="~assets/img/1.jpg"/> -->
+											<img :src="scope.row.pic" />
+										</template>
+									</el-table-column>
+									<el-table-column prop="price">
+
+									</el-table-column>
+									<el-table-column prop="num">
+
+									</el-table-column>
+									<el-table-column prop="mark">
+
+									</el-table-column>
+								</el-table>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
 				</div>
 				<div>
-					<span @click="showinfo" style="line-height: 100%;"><a href="javascript:">新增收货地址</a></span>
-				</div>
-
-			</div>
-
-			<div class="payinfo">
-				<buttonstyle style="margin-top: 10px;">
-					<div slot="context">袁明亮</div>
-				</buttonstyle>
-				<div style="width: 80%;margin-left: 20px;">
-					<el-table :data="userinfo" stripe>
-						<el-table-column prop="name" width="180">
-						</el-table-column>
-						<el-table-column prop="address" width="180">
-						</el-table-column>
-						<el-table-column prop="tel">
-						</el-table-column>
-					</el-table>
-				</div>
-			</div>
-
-		</div>
-		<el-dialog title="新增收货人信息" :visible.sync="dialogVisible" width="50%">
-			<el-form ref="ruleforms" :rules="rulesinfo" :model="ruleform" class="demo-ruleForm">
-
-				<el-form-item label="所在地区" prop="name" style="text-align: left;">
-					<el-cascader v-model="value" :options="options" :props="{ expandTrigger: 'hover' }"></el-cascader>
-				</el-form-item>
-				<el-form-item label="收货人" prop="address">
-					<el-input v-model="ruleform.address"></el-input>
-				</el-form-item>
-				<el-form-item label="详细地址" prop="detailaddress">
-					<el-input v-model="ruleform.detailaddress"></el-input>
-				</el-form-item>
-				<el-form-item label="手机号码" prop="phone">
-					<el-input v-model="ruleform.phone"></el-input>
-				</el-form-item>
-				<el-form-item label="固定电话" prop="telone">
-					<el-input v-model="ruleform.telone"></el-input>
-				</el-form-item>
-				<el-form-item label="邮箱地址" prop="email">
-					<el-input v-model="ruleform.email"></el-input>
-				</el-form-item>
-				<el-form-item label="地址别名" prop="addressname">
-					<el-input v-model="ruleform.addressname"></el-input>
-				</el-form-item>
-			</el-form>
-
-			<span slot="footer" class="dialog-footer">
-				<el-button @click="dialogVisible = false">取 消</el-button>
-				<el-button type="primary" @click="submit">确 定</el-button>
-			</span>
-		</el-dialog>
-		<el-divider></el-divider>
-		<!-- 支付方式 -->
-		<div>
-			<h3 class="bases">支付方式</h3>
-			<div class="paysect">
-				<div class="commbutton" slot="context">货到付款</div>
-				<buttonstyle>
-					<div slot="context">支付方式</div>
-				</buttonstyle>
-				<span>更多>></span>
-			</div>
-		</div>
-		<el-divider></el-divider>
-
-		<!-- 送货清单 -->
-		<div>
-			<div style="display: flex;justify-content: space-between;">
-				<h3 class="bases">送货清单</h3>
-				<div>
-					<span><a href="#">价格说明</a></span>
-					<span><a href="#">修改购物车</a></span>
-				</div>
-			</div>
-			<div class="sendhuo">
-				<div style="display: flex;flex-direction: column;justify-content: space-around;">
-					<p>配送方式</p>
-					<buttonstyle>
-						<div slot="context">快递运输</div>
-					</buttonstyle>
-					<p>
-						配送时间 ：<span>预计10月17日24:00前送达</span>
-					</p>
-					<el-divider></el-divider>
-					<div style="display: flex;align-items: center;">
-						<input type="checkbox" />
-						<span style="margin-left: 5px;">退货无忧</span>
-						<span style="color: red;">￥4.80</span>
-					</div>
-					<p>7天内退货，15天内换货，预计获得9.8元运费赔付(到小金库)。<a href="#">查看详情</a></p>
-				</div>
-				<div style="display: flex;flex-direction: column;justify-content: space-around;">
-
-					<p style="margin:10px 0px;">商家：<span>马提尔服饰专营店</span> </p>
-					<p style="margin:10px 0px;">活动商品购满120.00元，即可享受满减优惠</p>
-
-					<div style="margin:10px 0px;" class="largtable">
-						<el-table :data="goodsinfo">
-							<el-table-column width="180">
-								<template v-slot:default="scope">
-									<!-- <img src="~assets/img/1.jpg"/> -->
-									<img :src="scope.row.pic" />
-								</template>
-							</el-table-column>
-							<el-table-column prop="price">
-
-							</el-table-column>
-							<el-table-column prop="num">
-
-							</el-table-column>
-							<el-table-column prop="mark">
-
-							</el-table-column>
-						</el-table>
-					</div>
-				</div>
-			</div>
-
-
-	 
-	 
-		
-		</div>
-		<div>
-			<tabbar @func="infosse1" :title="['优惠卷', '京东', '礼品卡','领货码']">
-				<div class="text" slot="context">
-					<div v-show="0==curr">
-						<tabbar @func="infosse2" :title="['可用', '不可用']">
-							<div class="text" slot="context">
-								<div v-show="0==curr1">2342</div>
-								<div v-show="1==curr1">4562</div>
+					<tabbar @func="infosse1" :title="['优惠卷', '京东', '礼品卡','领货码']">
+						<div class="text" slot="context">
+							<div v-show="0==curr">
+								<tabbar @func="infosse2" :title="['可用', '不可用']">
+									<div class="text" slot="context">
+										<div v-show="0==curr1">优惠卷</div>
+										<div v-show="1==curr1">4562</div>
+									</div>
+								</tabbar>
 							</div>
-						</tabbar>
-					</div>
-					<div v-show="1==curr">234</div>
-					<div v-show="2==curr">
-						<tabbar @func="infosse3" :title="['可用', '不可用','添加礼品卡']">
-							<div class="text" slot="context">
-								<div v-show="0==curr2">44</div>
-								<div v-show="1==curr2">55</div>
-								<div v-show="2==curr2">66</div>
+							<div v-show="1==curr">234</div>
+							<div v-show="2==curr">
+								<tabbar @func="infosse3" :title="['可用', '不可用','添加礼品卡']">
+									<div class="text" slot="context">
+										<div v-show="0==curr2">44</div>
+										<div v-show="1==curr2">55</div>
+										<div v-show="2==curr2">66</div>
+									</div>
+								</tabbar>
 							</div>
-						</tabbar>
-					</div>
-					<div v-show="3==curr">
-						<tabbar @func="infosse4" :title="['可用', '不可用','添加领货码']">
-							<div class="text" slot="context">
-								<div v-show="0==curr3">77</div>
-								<div v-show="1==curr3">88</div>
-								<div v-show="2==curr3">99</div>
+							<div v-show="3==curr">
+								<tabbar @func="infosse4" :title="['可用', '不可用','添加领货码']">
+									<div class="text" slot="context">
+										<div v-show="0==curr3">77</div>
+										<div v-show="1==curr3">88</div>
+										<div v-show="2==curr3">99</div>
+									</div>
+								</tabbar>
 							</div>
-						</tabbar>
+						</div>
+					</tabbar>
+				</div>
+				<div style="margin-top:140px;">
+					<div>
+						<p style="text-align: right;">1 件商品，总商品金额：
+							<span style="display: inline-block;width: 50px;">￥19.90</span>
+						</p>
+						<p style="text-align: right;margin-top: 20px;">运费：
+							<span style="display: inline-block;width: 50px;">￥0.00</span>
+						</p>
 					</div>
 				</div>
-			</tabbar>
-		</div>
-		<div style="margin-top:140px;">
-			<div >
-				 <p style="text-align: right;">1 件商品，总商品金额：
-				 <span style="display: inline-block;width: 50px;">￥19.90</span>
-				 </p>
-				 <p style="text-align: right;margin-top: 20px;">运费：
-				  <span style="display: inline-block;width: 50px;">￥0.00</span>
-				 </p>
+				<button class="buttoncom" @click="submitinfo">提交订单</button>
 			</div>
+
 		</div>
-		<button class="buttoncom" @click="submitinfo">提交订单</button>
-</div>
+
+	</div>
 
 
-	 
+
+
 
 
 
 </template>
 
 <script>
-	import buttonstyle from '../../components/payoff/selebutton.vue'
-	import tabbar from '../../components/payoff/tabbar.vue'
-	
-	 
+	import buttonstyle from 'components/payoff/selebutton'
+	import tabbar from 'components/payoff/tabbar'
+
+
 	export default {
 		components: {
 			buttonstyle,
-			tabbar,
-			 
+			tabbar
+		},
+		mounted(){
+			console.log("2332");
 		},
 		data() {
 			return {
@@ -469,7 +498,7 @@
 			this.showuserinfo();
 		},
 		methods: {
-			submitinfo(){
+			submitinfo() {
 				this.$router.push('/payoffmoney')
 			},
 			submit() {
@@ -530,25 +559,26 @@
 
 
 <style scoped>
-	.buttoncom{
+	.buttoncom {
 		float: right;
-		    position: relative;
-		    width: 135px;
-		    height: 36px;
-		    line-height: 36px;
-		    margin: 8px 10px 0 0;
-		    padding: 0;
-		    background-color: #e00;
-		    overflow: hidden;
-		    color: #fff;
-		    font-weight: 700;
-		    font-size: 16px;
-		    font-family: arial,"Microsoft YaHei";
-		    display: inline-block;
-		    border-radius: 3px;
-		    cursor: pointer;
-		    border: 0;
+		position: relative;
+		width: 135px;
+		height: 36px;
+		line-height: 36px;
+		margin: 8px 10px 0 0;
+		padding: 0;
+		background-color: #e00;
+		overflow: hidden;
+		color: #fff;
+		font-weight: 700;
+		font-size: 16px;
+		font-family: arial, "Microsoft YaHei";
+		display: inline-block;
+		border-radius: 3px;
+		cursor: pointer;
+		border: 0;
 	}
+
 	.sendhuo {
 		display: flex;
 
@@ -575,7 +605,7 @@
 		float: left;
 		position: relative;
 		border: 1px solid #ddd;
-		 
+
 		line-height: 18px;
 		padding: 5px 24px;
 		cursor: pointer;
@@ -621,9 +651,16 @@
 	}
 
 	.contain {
-		margin: 100px 300px;
-		height: 1000px;
+		margin: 0px 85px 100px;
+		height: 1100px;
 		border: 1px solid #ddd;
+		padding: 30px;
+		min-width: 750px;
+		font-size: 12px;
+	}
+
+	.containtop {
+		margin: 50px 85px 0px;
 		padding: 30px;
 		min-width: 700px;
 		font-size: 12px;
