@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<div>
 		<div class="containtop" style="display: flex;justify-content: space-between;flex-wrap: nowrap;align-items: center;">
 			<div style="flex: 0 0 20%;">
@@ -12,92 +12,105 @@
 				<input class="w-75 input_1" type="text" placeholder="手机/电脑/鼠标/酒水" style="height: 40px;border: 1px solid #888;outline: 0;padding: 15px;font-size: 14px;font-family:agency fb;" /><button
 				 class="buttoninfo">搜索</button>
 				<span><span id="one33" style="color: red;">
-						<count-down :info="'one33#2049:10:20:18:10:0'" /></span></span>
+						 </span></span>
 			</div>
 		</div>
 
 		<div class="contain">
-			<el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+			<el-table   :summary-method="pricesumsgetsum"     ref="multipleTable" :data="tableData" tooltip-effect="dark" @select-all="selectindex" @select="selectindex" style="width: 100%" >
 				<el-table-column type="selection" width="55">
 				</el-table-column>
-
-				<el-table-column label="商品" width="120">
-					<template slot-scope="scope">
+					<!-- <template slot-scope="scope">
 						{{ scope.row.date }}
-					</template>
+					</template> -->
+				<el-table-column prop="shopname" label="商品" width="400">
+					
 				</el-table-column>
 
-				<el-table-column prop="name" label="单价" width="120">
+				<el-table-column prop="price" label="单价" width="200">
 				</el-table-column>
 
-				<el-table-column prop="address" label="数量" show-overflow-tooltip>
+				<el-table-column prop="num" label="数量" width="200" show-overflow-tooltip>
 				</el-table-column>
 
-				<el-table-column prop="address" label="小计" show-overflow-tooltip>
+				<el-table-column   prop="pricesums" width="200" label="小计" show-overflow-tooltip>
 				</el-table-column>
 
 				<el-table-column prop="address" label="操作" show-overflow-tooltip>
+					 <template slot-scope="scope">
+					        <el-button
+					          @click="deleteRow(scope.row.id)"  type="text"  size="small"> 移除</el-button>
+					      </template>
 				</el-table-column>
 			</el-table>
-
-			<div class="bottoms">
-				<div style="flex: 0 0 50%;">
-
+			<div style="position: fixed;bottom: 60px;width: 85%;">
+				<div class="bottoms" >
+					<div style="flex: 0 0 50%;">
+					</div>
+					<div style="flex: 0 0 50%;text-align: right;">
+						<p style="text-align: right;">
+							<span>已选择 <span style="font-size: 16px;color: red;font-weight: 900;">{{selectnum}}</span> 几件商品</span>
+							<span>总价:<span style="font-size: 16px;color: red;font-weight: 900;">{{sumpricinfo}}</span></span> 
+						</p>
+						<button class="sumbu" @click="gomoney">去结算</button>
+					</div>
 				</div>
-
-				<div style="flex: 0 0 50%;text-align: right;">
-					<button class="sumbu" @click="gomoney">去结算</button>
-				</div>
-			</div>
+			</div>	
 		</div>
-
-
 	</div>
 </template>
-
 <script>
-	import countDown from 'components/payoff/countdown'
+	 
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		name: "info",
-		components: {
-			countDown
+		 
+		mounted(){
+			this.showcarnum();
 		},
 		data() {
 			return {
-				tableData: [{
-					date: '2016-05-03',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-02',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-04',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-01',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-08',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-06',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}, {
-					date: '2016-05-07',
-					name: '王小虎',
-					address: '上海市普陀区金沙江路 1518 弄'
-				}],
-				multipleSelection: []
+				tableData:[],
+				multipleSelection: [],
+				count:0,
+				sumpricinfo:0,
+				selectnum:0,
+				info:[], 
 			}
 		},
 
 		methods: {
+			pricesumsgetsum(param){	
+				console.log("344234234234234234")
+				console.log(param);
+			},
+			
+			selectindex(){
+				 var info = this.$refs.multipleTable.selection;
+				 this.info=info;
+				 this.selectnum = info.length;
+				 var start = 0;
+				 info.map(val=>{
+					 start+= (val.pricesums.substring(1)-0);
+				 })
+				this.sumpricinfo = "￥"+start;
+			},
+			deleteRow(index){
+				this.axios.post("/carselectdelete",{id:index}).then(val=>{
+					
+					if(val.data.message == 200){
+						this.$message.success("数据删除成功");
+						this.showcarnum();
+					}
+					 
+				})
+			},
+			textinfo(){
+			    var count = this.count;
+			    this.zdybus.$emit("textinfo",count);
+			},
 			toggleSelection(rows) {
 				if (rows) {
 					rows.forEach(row => {
@@ -111,10 +124,53 @@
 				this.multipleSelection = val;
 			},
 			gomoney() {
-				this.$router.push("/payoff")
-			}
+				 
+				var ts = [];
+				ts.push(this.info);
+				ts.push(this.sumpricinfo);
+				ts.push(this.selectnum);
+
+				var _info =  JSON.stringify(ts);
+				_info = encodeURIComponent(_info);
+				if(this.info.length==0){
+					this.$message.success("请选择商品")
+				}else{
+					this.$router.push(`payoff/${_info}`) 
+				}
+				
+					 
+			 
+			},
+			showcarnum(){
+				var unmae = this.uname || sessionStorage.getItem("uname");
+				
+				if(unmae!="" || unmae!=null){
+					this.axios.post("/carselect",{uname:unmae}).then(val=>{
+						console.log("1234567")
+						console.log(val.data.data) 
+						console.log("1234567")
+						this.count = val.data.data.length;
+						this.tableData = val.data.data;
+						this.textinfo();
+					})
+				}
+			},
 		}
 	}
+	
+	// textinfo(){
+	// 	var count = this.count;
+	//     this.zdybus.$emit("textinfo",count);
+	// },
+	// showcarnum(){
+	// 	var unmae = this.uname || sessionStorage.getItem("uname");
+	// 	if(unmae!=null || unmae!=""){
+	// 		this.axios.post("/carselect",{uname:"yml"}).then(val=>{
+	// 			 this.count = val.data.data.length;
+	// 			 this.textinfo();
+	// 		})
+	// 	}
+	// },
 </script>
 <style scoped>
 	.bottoms {

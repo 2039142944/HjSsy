@@ -29,6 +29,7 @@
      </div>
      <div class="miaosha"></div>
      <!-- 轮播图组件 -->
+	 
      <my-carousel></my-carousel>
      <!-- 商品内容 -->
      <div class="mt-2">

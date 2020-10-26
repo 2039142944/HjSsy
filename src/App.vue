@@ -1,7 +1,7 @@
 <template>
   <div id="app">  
   <top-bar style="position: absolute;z-index: 19;top: 0;width: 100%;min-width: 1300px;"/>
-   <router-view></router-view>
+	   <router-view></router-view>
   </div>
 </template>
 

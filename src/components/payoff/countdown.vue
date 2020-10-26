@@ -58,7 +58,10 @@
 					`
 					
 					var infos = document.getElementById(id);
-					infos.innerHTML = dsq;
+					if(infos!=undefined){
+						infos.innerHTML = dsq;
+					}
+					
 				}, 1000);
 			}
 		}

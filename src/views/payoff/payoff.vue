@@ -18,7 +18,7 @@
 
 				</el-steps>
 			</div>
-		</div>x`
+		</div>
 		<div>
 			<div class="contain">
 				<div>
@@ -91,11 +91,13 @@
 				<div>
 					<h3 class="bases">支付方式</h3>
 					<div class="paysect">
-						<div class="commbutton" slot="context">货到付款</div>
-						<buttonstyle>
-							<div slot="context">支付方式</div>
+						<buttonstyle   slot="context" v-show="marksp">
+							<div slot="context">白条支付</div>
 						</buttonstyle>
-						<span>更多>></span>
+						<buttonstyle v-show="!marksp">
+							<div slot="context">银行卡支付</div>
+						</buttonstyle>
+						 
 					</div>
 				</div>
 				<el-divider></el-divider>
@@ -116,7 +118,7 @@
 								<div slot="context">快递运输</div>
 							</buttonstyle>
 							<p>
-								配送时间 ：<span>预计10月17日24:00前送达</span>
+								配送时间 ：<span>预计3天后送达</span>
 							</p>
 							<el-divider></el-divider>
 							<div style="display: flex;align-items: center;">
@@ -137,6 +139,8 @@
 										<template v-slot:default="scope">
 											<!-- <img src="~assets/img/1.jpg"/> -->
 											<img :src="scope.row.pic" />
+											<span> </span
+											>
 										</template>
 									</el-table-column>
 									<el-table-column prop="price">
@@ -164,8 +168,8 @@
 							<div v-show="0==curr">
 								<tabbar @func="infosse2" :title="['可用', '不可用']">
 									<div class="text" slot="context">
-										<div v-show="0==curr1">优惠卷</div>
-										<div v-show="1==curr1">4562</div>
+										<div v-show="0==curr1">无</div>
+										<div v-show="1==curr1">无</div>
 									</div>
 								</tabbar>
 							</div>
@@ -173,18 +177,18 @@
 							<div v-show="2==curr">
 								<tabbar @func="infosse3" :title="['可用', '不可用','添加礼品卡']">
 									<div class="text" slot="context">
-										<div v-show="0==curr2">44</div>
-										<div v-show="1==curr2">55</div>
-										<div v-show="2==curr2">66</div>
+										<div v-show="0==curr2">无</div>
+										<div v-show="1==curr2">无</div>
+										<div v-show="2==curr2">无</div>
 									</div>
 								</tabbar>
 							</div>
 							<div v-show="3==curr">
 								<tabbar @func="infosse4" :title="['可用', '不可用','添加领货码']">
 									<div class="text" slot="context">
-										<div v-show="0==curr3">77</div>
-										<div v-show="1==curr3">88</div>
-										<div v-show="2==curr3">99</div>
+										<div v-show="0==curr3">无</div>
+										<div v-show="1==curr3">无</div>
+										<div v-show="2==curr3">无</div>
 									</div>
 								</tabbar>
 							</div>
@@ -193,11 +197,13 @@
 				</div>
 				<div style="margin-top:140px;">
 					<div>
-						<p style="text-align: right;">1 件商品，总商品金额：
-							<span style="display: inline-block;width: 50px;">￥19.90</span>
+						<p style="text-align: right;">总商品金额：
+						<span>总价:<span style="font-size: 16px;color: red;font-weight: 900;">{{sumprice}}</span></span> 
+							 
 						</p>
 						<p style="text-align: right;margin-top: 20px;">运费：
-							<span style="display: inline-block;width: 50px;">￥0.00</span>
+						<span style="font-size: 16px;color: red;font-weight: 900;">￥5.2</span>
+							 
 						</p>
 					</div>
 				</div>
@@ -226,26 +232,29 @@
 			buttonstyle,
 			tabbar
 		},
-		mounted(){
-			console.log("2332");
+		props:['cartinfo'],
+		// 当mounted写两遍的时候默认就会重写，第一份方法就会不执行 
+		mounted() {
+			if(this.cartinfo){
+				var infos =  JSON.parse(decodeURIComponent(this.cartinfo));  
+			}
+			
+			// 根据传过来的数组长度，进行判断，到底是白条分期还是，普通购物购买
+			// 长度为3表示普通，长度为一表示白条分期
+			console.log(infos)
+			this.dataparse(infos);
+			this.showuserinfo()
+			
 		},
 		data() {
 			return {
+				marksp:false,
+				// 控制白条显示
+				// 所有的商品信息保存
 				goodsinfo: [
-					// 这是图片动态加载问题
-					{
-						pic: require('@/assets/img/1.jpg'),
-						price: '10元',
-						num: '5',
-						mark: '有'
-					},
-					{
-						pic: require('@/assets/img/1.jpg'),
-						price: '10元',
-						num: '2',
-						mark: '没有'
-					},
+					 
 				],
+				sumprice:0,
 				userinfo: [],
 				value: [],
 				dialogVisible: false,
@@ -494,12 +503,40 @@
 				}
 			}
 		},
-		mounted() {
-			this.showuserinfo();
-		},
+	// cartinfo:  {
+	// 				name:'yml',
+	// 				shopname: 'BABIBOY外套男冬季韩版修身短款冬装棉服潮流男棒球服棉袄 17111黑色',
+	// 				price: '￥99.00',
+	// 				num: '2',
+	// 				pricesums:'￥198',
+	// 				mark: '有',
+	// 				pic:'/images/fangdajin/sm/fd-sm-1.jpg'
+	// 			},	
 		methods: {
+			dataparse(argo){
+				var tempobjext = {}
+				if(argo.length == 1){
+					this.goodsinfo = argo;
+					this.sumprice = argo[0].price;
+					this.marksp = true;
+				}else if(argo.length == 3){
+					argo[0].forEach(val=>{
+						tempobjext.pic = val.shopid;
+						tempobjext.mark = '有';
+						tempobjext.price = val.pricesums;
+						tempobjext.num = val.num;
+						this.goodsinfo.push(tempobjext);
+						this.marksp = false;	
+					})
+					this.sumprice = argo[1];
+					console.log(this.goodsinfo);
+					
+				}
+				
+			},
+			
 			submitinfo() {
-				this.$router.push('/payoffmoney')
+				this.$router.push(`/payoffmoney/${ this.cartinfo}`)
 			},
 			submit() {
 				console.log(this.$refs)
@@ -522,17 +559,28 @@
 				});
 			},
 			showuserinfo() {
-				var newarry = [];
-				var obj = [];
+				var obj = {};
 				if (localStorage.getItem("info").length > 0) {
-					localStorage.getItem("info").split("@").forEach((item, i) => {
-						var info = item.split("#");
-						obj.name = info[0]
-						obj.address = info[1];
-						obj.tel = info[2];
-						newarry.push(obj);
-					})
+					// localStorage.getItem("info").split("@").forEach((item, i) => {
+					// 	var info = item.split("#");
+					// 	obj.name = info[0]
+					// 	obj.address = info[1];
+					// 	obj.tel = info[2];
+					// 	newarry.unshift(obj);
+					// })
+					var newarry = [];
+					var info = localStorage.getItem("info").split("@").pop().split("#");
+					obj.name = info[0]
+					obj.address = info[1];
+					obj.tel = info[2];
+					
+					console.log("3333333333333333333333")
+					console.log(obj);
+					newarry.unshift(obj);
 					this.userinfo = newarry;
+					 
+				 
+			 
 				}
 
 			},
@@ -559,7 +607,12 @@
 
 
 <style scoped>
+.text{
+	height:30px !important;
+	background-color: #eee !important;
+}
 	.buttoncom {
+	
 		float: right;
 		position: relative;
 		width: 135px;

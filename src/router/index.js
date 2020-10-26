@@ -42,15 +42,17 @@ const routes = [
 		component: ShoppingCar,
 	},
 	{
-		path: '/payoff',
+		path: '/payoff/:cartinfo',
+		// 页面内容失效问题cartinfo
 		name: 'payoff',
-		component: () => import( /* webpackChunkName: "about" */ '../views/payoff/payoff.vue')
+		component: () => import( /* webpackChunkName: "about" */ '../views/payoff/payoff.vue'),
+		props: true 
 	},
 	{
-		path: '/payoffmoney',
+		path: '/payoffmoney/:cartinfo',
 		name: 'payoffmoney',
-		component: () => import( /* webpackChunkName: "about" */ '../views/payoff/payoffmoney.vue')
-
+		component: () => import( /* webpackChunkName: "about" */ '../views/payoff/payoffmoney.vue'),
+		props: true 
 	}
 ]
 
